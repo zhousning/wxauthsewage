@@ -1,0 +1,87 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">巡检任务详情</view>
+</cu-custom>
+
+<scroll-view scroll-y class="scrollPage">
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class='action'>
+      <text class='cuIcon-titles text-orange '></text>巡检日期：{{task.task_date}}
+    </view>
+  </view>
+  <view class="cu-card article no-card margin-bottom">
+    <view class="cu-item shadow padding-xs">
+      <view class="content">
+        <view class="desc">
+          <view class="content margin-bottom-xs">巡检人员：
+            <block wx:for="{{task.inspectors}}" wx:key="*this" wx:for-item="user">
+              {{user}}
+            </block>
+          </view>
+          <view class="content margin-bottom-xs">巡检备注：{{task.desc}}</view>
+        </view>
+        <!--<view>
+          <view class="cu-tag bg-red light sm round">未接单</view>
+           <view class="cu-tag bg-green light sm round">处理中</view> 
+        </view>-->
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class='action'>
+      <text class='cuIcon-titles text-orange '></text> 巡检进度
+    </view>
+  </view>
+  <view class="cu-card article no-card margin-bottom">
+    <view class="cu-item shadow padding-bottom-xs">
+
+      <view class="cu-timeline">
+        <view class="cu-item" wx:for="{{inspectors}}" wx:for-item="singer" wx:key="*this">
+          <view class="content bg-white">
+            <view class="cu-capsule radius">
+              <view class="cu-tag bg-cyan">已签到</view>
+              <view class="cu-tag bg-white">{{singer}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class='action'>
+      <text class='cuIcon-titles text-orange '></text> 巡检记录
+    </view>
+  </view>
+  <view wx:for="{{reports}}" wx:for-item='rept' wx:key="*this" class="cu-card dynamic no-card">
+    <view class="cu-item shadow">
+      <view class="cu-list menu-avatar">
+        <view class="cu-item">
+          <view class="cu-avatar round lg" style="background-image:url({{rept.avatar}});"></view>
+          <view class="content flex-sub">
+            <view>{{rept.name}}</view>
+            <view class="text-gray text-sm flex justify-between">
+              {{rept.time}}
+            </view>
+          </view>
+          <block wx:if="{{rept.state == '0'}}">
+            <view class="cu-tag bg-green">正常</view>
+          </block>
+          <block wx:else>
+            <view class="cu-tag bg-red">异常</view>
+          </block>
+        </view>
+      </view>
+      <view class="text-content">
+        {{rept.question}}
+      </view>
+      <view class="grid flex-sub padding col-3 grid-square">
+        <view class="bg-img" data-url='{{img}}' data-urls="{{rept.imgs}}" bindtap="previewImage" style="background-image:url({{img}});" wx:for="{{rept.imgs}}" wx:for-item="img" wx:key="*this">
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='cu-tabbar-height'></view>
+</scroll-view>

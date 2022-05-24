@@ -1,0 +1,35 @@
+<scroll-view scroll-y class="scrollPage">
+    <!-- <button class="cu-btn line-cyan padding-sm margin-xs " bindtap="task_start_test" >开始巡检</button>
+        <button class="cu-btn line-cyan padding-sm margin-xs " bindtap="task_end_test" >到达站点</button>
+        <block wx:for="{{points}}" wx:key="*this">
+        <view>{{item}}</view>
+        </block>-->
+    <view wx:for="{{items}}" wx:key="*this" class="cu-card article ">
+
+        <view class="cu-item shadow padding-bottom-xs">
+            <navigator hover-class='none' url="/pages/todos/detail/detail?task_id={{item.task_id}}">
+                <view class="cu-bar bg-white solid-bottom margin-bottom">
+                    <view class='action'>
+                        <text class='cuIcon-titles text-blue '></text>巡检日期：{{item.task_date}}
+                    </view>
+                </view>
+
+                <view class="content">
+                    <view class="desc">
+                        <view class="content margin-bottom-xs">巡检人员：
+                            <block wx:for="{{item.inspectors}}" wx:key="*this" wx:for-item="user">
+                                {{user}}
+                            </block>
+                        </view>
+                        <view class="content margin-bottom-xs">巡检备注：{{item.desc}}</view>
+                    </view>
+                </view>
+            </navigator>
+            <view class="flex solid-top margin-top padding-xs justify-between">
+                <button class="cu-btn line-blue padding-sm margin-xs " bindtap="task_start" data-task="{{item.task_id}}">开始巡检</button>
+                <button class="cu-btn line-blue padding-sm margin-xs " bindtap="task_end" data-task="{{item.task_id}}">到达站点</button>
+            </view>
+        </view>
+    </view>
+    <view class='cu-tabbar-height'></view>
+</scroll-view>

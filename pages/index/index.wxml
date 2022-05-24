@@ -1,0 +1,44 @@
+<todos wx:if="{{PageCur=='todos'}}"></todos>
+<done wx:if="{{PageCur=='done'}}"></done>
+<market wx:if="{{PageCur=='market'}}"></market>
+<my wx:if="{{PageCur=='my'}}"></my>
+
+<view class="cu-bar tabbar bg-white  shadow foot ">
+  <view class="action" bindtap="NavChange" data-cur="todos">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/todos{{PageCur=='todos'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='todos'?'text-black':'text-gray'}}">今日任务</view>
+  </view>
+
+  <view class="action" bindtap="NavChange" data-cur="done">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/done{{PageCur=='done'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='done'?'text-black':'text-gray'}}">巡检计划</view>
+  </view> 
+
+  <!-- <view class="action text-gray add-action">
+    <navigator hover-class='none' url="/pages/done/repair/repair" class="cu-btn cuIcon-add bg-black shadow"></navigator>
+    手工报修
+  </view> -->
+
+  <view class="action text-gray add-action">
+    <button class="cu-btn cuIcon-scan bg-blue shadow" bindtap="scanRepair"></button>
+    扫一扫
+  </view>
+
+  <view class="action" bindtap="NavChange" data-cur="market">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/market{{PageCur=='market'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='market'?'text-black':'text-gray'}}">巡检历史</view>
+  </view> 
+
+  <view class="action" bindtap="NavChange" data-cur="my">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/my{{PageCur=='my'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='my'?'text-black':'text-gray'}}">我的</view>
+  </view>
+</view>

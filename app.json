@@ -1,0 +1,38 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/todos/home/home",
+        "pages/todos/detail/detail",
+        "pages/todos/nav/nav",
+        "pages/todos/locationauth/locationauth",
+        "pages/todos/process/process",
+        "pages/todos/confirm/confirm",
+        "pages/todos/complete/complete",
+        "pages/done/home/home",
+        "pages/market/home/home",
+        "pages/my/home/home",
+        "pages/my/about/about",
+        "pages/my/log/log",
+        "pages/my/test/list",
+        "pages/my/test/filter",
+        "pages/done/repair/repair",
+        "pages/my/auth/auth"
+    ],
+    "window": {
+        "navigationStyle": "custom"
+    },
+    "usingComponents": {
+        "cu-custom": "/colorui/components/cu-custom"
+    },
+    "requiredBackgroundModes": [
+        "location"
+    ],
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于定位使用"
+        }
+    },
+    "debug": true,
+    "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,68 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">个人资料</view>
+</cu-custom>
+<scroll-view scroll-x class='bg-white padding-xl '>
+    <block wx:if="{{ongoing}}">
+        <form>
+            <view class="margin-lr">
+                <view class="cu-form-group margin-top">
+                    <view class="title">姓名</view>
+                    <input placeholder="姓名" name="username" bindinput="usernameInput" />
+                </view>
+
+                <view class="cu-form-group">
+                    <view class="title">手机号</view>
+                    <input placeholder="手机号" name="phone" type="phone" bindinput="phoneInput" />
+                </view>
+                <view class="cu-form-group ">
+                    <view class="title">县区</view>
+                    <picker bindchange="AreaPickerChange" value="{{area_index}}" range="{{area_picker}}">
+                        <view class="picker">
+                            {{area_picker[area_index]}}
+                        </view>
+                    </picker>
+                </view>
+                <view class="cu-form-group ">
+                    <view class="title">街道</view>
+                    <picker bindchange="StreetPickerChange" value="{{street_index}}" range="{{street_picker}}">
+                        <view class="picker">
+                            {{street_picker[street_index]}}
+                        </view>
+                    </picker>
+                </view>
+                <view class="cu-form-group ">
+                    <view class="title">站点</view>
+                </view>
+                <view class="cu-form-group ">
+                    <checkbox-group bindchange="checkboxChange" class="cu-list menu sm-border card-menu margin">
+                        <view class="cu-item  " wx:for="{{items}}" wx:key="{{item.value}}">
+                            <label class="action content">
+                                <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+                                {{item.name}}
+                            </label>
+                        </view>
+                    </checkbox-group>
+                </view>
+                <view class="padding flex flex-direction">
+                    <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="login">提 交</button>
+                </view>
+            </view>
+        </form>
+    </block>
+    <block wx:else>
+        <view class="margin-lr">
+            <view class="cu-form-group margin-top">
+                <view class="title">姓名: {{username}}</view>
+            </view>
+
+            <view class="cu-form-group">
+                <view class="title">手机号: {{phone}}</view>
+            </view>
+
+            <view class="cu-form-group">
+                <view class="title">站点: {{fct}}</view>
+            </view>
+        </view>
+    </block>
+</scroll-view>

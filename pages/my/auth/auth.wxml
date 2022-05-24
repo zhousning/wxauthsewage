@@ -1,0 +1,17 @@
+<cu-custom bgColor="bg-myblue" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">登录</view>
+</cu-custom>
+
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" class="bg-myblue" bindtap="getUserProfile"> 微信用户一键登录 </button>
+      <button wx:else open-type="getUserInfo" class="bg-myblue" bindgetuserinfo="getUserInfo">  微信用户一键登录 </button>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>

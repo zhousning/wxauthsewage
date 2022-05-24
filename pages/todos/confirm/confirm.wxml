@@ -1,0 +1,5 @@
+<scroll-view scroll-y class="scrollPage">
+
+  <order-card></order-card>
+<view class='cu-tabbar-height'></view>
+</scroll-view>

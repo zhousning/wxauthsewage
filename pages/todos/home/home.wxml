@@ -1,0 +1,89 @@
+<cu-custom bgColor="bg-myblue" isBack="{{false}}">
+    <view slot="backText">返回</view>
+    <view slot="content">今日任务</view>
+</cu-custom>
+
+<!--<navcpn></navcpn> -->
+<scroll-view scroll-y class="scrollPage todopage">
+<view class="page-body-wrapper">
+    <camera device-position="front" flash="off" binderror="error" style="width: 100%; height: 500px;"></camera>
+    <view class="btn-area">
+      <button type="primary" bindtap="takePhoto">拍照</button>
+    </view>
+    <view class="btn-area">
+      <button type="primary" bindtap="authProcess">识别</button>
+    </view>
+    <view class="preview-tips">预览</view>
+    <image wx:if="{{src}}" mode="widthFix" src="{{src}}"></image>
+  </view>
+    <view class='cu-tabbar-height'>
+    </view>
+</scroll-view>
+
+<!--     <view wx:for="{{items}}" wx:key="*this" class="cu-card article ">
+        <view class="cu-item   padding-bottom-xs"> -->
+            <!--<navigator hover-class='none' url="/pages/todos/detail/detail?task_id={{item.task_id}}"> -->
+<!--             <view class="cu-bar bg-white solid-bottom margin-bottom">
+                <view class='action'>
+                    <text class='cuIcon-titles text-blue '></text>巡检日期：{{item.task_date}}
+                </view>
+            </view>
+
+            <view class="content">
+                <view class="desc">
+                    <view class="content margin-bottom-xs">巡检人员：
+                        <block wx:for="{{item.inspectors}}" wx:key="*this" wx:for-item="user">
+                            {{user}}
+                        </block>
+                    </view>
+                    <view class="content margin-bottom-xs">巡检备注：{{item.desc}}</view>
+                </view>
+            </view> -->
+            <!--</navigator>-->
+<!--         </view>
+        <block wx:if="{{!task_ongoing}}">
+            <view class="text-center padding margin-xl  shadow-blur">
+                <text class="text-xl">任务待开始</text>
+            </view>
+        </block>
+        <block wx:if="{{task_ongoing}}">
+            <view class="text-center padding-top margin-xl bg-gradual-purple shadow-blur justify-center align-center">
+                <text class="text-xl">任务进行中,</text>
+                <text class="text-xl">请勿离开...</text>
+                <image src="../../../images/wave.gif" mode="scaleToFill" class="gif-black response" style="height:100rpx"></image>
+            </view>
+        </block>
+        <view class="flex  margin-top padding-xs justify-center">
+            <block wx:if="{{!task_ongoing}}">
+                <block wx:if="{{!start_going}}">
+                    <view class=" start-btn margin-top-xl radius bg-gradual-blue shadow-blur text-xl" bindtap="task_start" data-task="{{item.task_id}}">
+                        <text class="text-white">开始巡检</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class=" start-btn margin-top-xl radius bg-grey shadow-blur text-xl">
+                        <text class=" text-white">开启中</text>
+                    </view>
+                </block>
+            </block>
+            <block wx:if="{{task_ongoing}}">
+                <block wx:if="{{!end_going}}">
+                    <view class=" start-btn margin-top-xl radius bg-gradual-pink shadow-blur text-xl" bindtap="task_end" data-task="{{item.task_id}}">
+                        <text class="text-white">到达站点</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class=" start-btn margin-top-xl radius bg-grey shadow-blur text-xl">
+                        <text class=" text-white">结束中</text>
+                    </view>
+                </block>
+            </block>
+        </view> -->
+        <!--<view class="flex solid-top margin-top padding-xs justify-between">
+        <button class="cu-btn line-blue padding-sm margin-xs " bindtap="task_start" data-task="{{item.task_id}}">开始巡检</button>
+        <button class="cu-btn line-blue padding-sm margin-xs " bindtap="task_end" data-task="{{item.task_id}}">到达站点</button></view>-->
+<!--     </view>
+    <button class="cu-btn line-blue padding-sm margin-xs " bindtap="test">开始巡检</button>
+    <view>
+        <text wx:for="{{positions}}">{{item}}</text>
+    </view> -->
