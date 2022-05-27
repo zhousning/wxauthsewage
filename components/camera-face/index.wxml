@@ -1,0 +1,17 @@
+<!--components/camera-face/index.wxml-->
+<!--人脸识别录像组件-->
+<view class="page-body">
+    <view class="camera-box">
+        <camera mode="normal" device-position="{{devicePosition}}" frame-size="{{frameSize}}" resolution="{{resolution}}" flash="{{flash}}" binderror="error" bindstop="stop" class="camera">
+        </camera>
+        <view class="img-view">
+            <image mode="scaleToFill" class="mask-img" src="../../images/mask.png"></image>
+        </view>
+    </view>
+    <view class="bottom-view">
+        <view wx:if="{{!bottomTips}}" class="bottom-btn" bindtap="readyRecord">开始识别</view>
+        <view wx:else class="bottom-tips">{{bottomTips}}</view>
+    </view>
+    <button bindtap="test">test</button>
+
+</view>
