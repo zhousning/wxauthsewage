@@ -13,7 +13,6 @@ Component({
         handleTap() {
             wx.navigateTo({
                 url: "/pages/todos/locationauth/locationauth",
-                //url: "/pages/todos/faceauth/faceauth",
             })
         }
     }
