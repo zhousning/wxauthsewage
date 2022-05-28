@@ -5,8 +5,8 @@
 <view class="page">
     <camera-face id="cameraFace" bind:noAuth="handleNoAuth" bind:complete="handleComplete" bind:cannotUse="handleCannotuse" />
 
-    <view class="preview-tips">预览视频</view>
-    <video wx:if="{{videoSrc}}" class="video" src="{{videoSrc}}"></video>
+   <!--  <view class="preview-tips">预览视频</view>
+    <video wx:if="{{videoSrc}}" class="video" src="{{videoSrc}}"></video> -->
 
-    <canvas type="2d" id="mycanvas" style="width: 300px; height: 300px;"></canvas>
+   
 </view>

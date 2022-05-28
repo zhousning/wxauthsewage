@@ -1,4 +1,5 @@
 // components/camera-face/index.js
+const app = getApp()
 
 import {
     getAuthorize,
@@ -60,10 +61,10 @@ Component({
             type: String,
             value: 'off'
         },
-        // 检测视频帧的节流时间，默认500毫秒执行一次
+        // 检测视频帧的节流时间，默认2000毫秒执行一次
         throttleFrequency: {
             type: Number,
-            value: 500
+            value: 2000
         }
     },
 
@@ -84,13 +85,14 @@ Component({
         isReading: false, // 是否在准备中
         isRecoding: false, // 是否正在录制中
         bottomTips: '', // 底部提示文字
+        src: ''
     },
 
     /**
      * 组件的方法列表
      */
     methods: {
-       
+
         // 开启相机ctx
         async start() {
             const result = await this.initAuthorize();
@@ -262,18 +264,30 @@ Component({
                 success() {
                     wx.canvasToTempFilePath({
                         canvasId: 'mycanvas',
+                        x: 0,
+                        y: 0,
+                        width: frame.width,
+                        heihgt: frame.heihgt,
+                        fileType: 'jpg',
+                        destWidth: frame.width,
+                        destHeight: frame.height,
+                        quality: 0.8,
                         success(res) {
-                            that.authProcess(res.tempFilePath)
+                            console.log(res.tempFilePath)
+                            that.setData({
+                                src: res.tempFilePath
+                            })
+                            //that.authProcess(res.tempFilePath)
                         },
                         fail(res) {
                             console.log('canvasToTempFilePath', res);
                         }
-                    })
+                    }, that)
                 },
                 fail(res) {
                     console.log('canvasPutImageData', res);
                 }
-            })
+            }, that)
         },
         // 人脸移出等取消录制
         cancel() {

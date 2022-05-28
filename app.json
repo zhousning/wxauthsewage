@@ -6,6 +6,7 @@
         "pages/todos/detail/detail",
         "pages/todos/nav/nav",
         "pages/todos/locationauth/locationauth",
+        "pages/todos/faceauth/faceauth",
         "pages/todos/process/process",
         "pages/todos/confirm/confirm",
         "pages/todos/complete/complete",
