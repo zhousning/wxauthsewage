@@ -9,6 +9,7 @@
         "pages/todos/process/process",
         "pages/todos/confirm/confirm",
         "pages/todos/complete/complete",
+        "pages/todos/auth/auth",
         "pages/done/home/home",
         "pages/market/home/home",
         "pages/my/home/home",

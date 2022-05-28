@@ -13,5 +13,5 @@
         <view wx:else class="bottom-tips">{{bottomTips}}</view>
     </view>
     
-    <canvas canvas-id="mycanvas" style="width: 100vw; height: 100vh;display: none;"></canvas>
+    <canvas canvas-id="mycanvas" style="width: 100vw; height: 100vh;"></canvas>
 </view>

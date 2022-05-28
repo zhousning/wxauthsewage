@@ -1,0 +1,10 @@
+<cu-custom bgColor="bg-myblue" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">位置信息</view>
+</cu-custom>
+
+<view class="container">
+  <view class="userinfo">
+      <button bindtap="openSetting" class="bg-myblue" >授权摄像头</button>
+  </view>
+</view>

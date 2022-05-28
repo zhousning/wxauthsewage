@@ -2,10 +2,7 @@
 const app = getApp()
 
 import {
-    getAuthorize,
-    setAuthorize,
     throttle,
-    checkVersion
 } from './utils'
 
 // 提示信息
@@ -82,59 +79,27 @@ Component({
 
     // 组件的初始数据
     data: {
-        isReading: false, // 是否在准备中
         isRecoding: false, // 是否正在录制中
         bottomTips: '', // 底部提示文字
-        src: ''
+    },
+
+    lifetimes: {
+        attached: function () {
+            this.ctx = wx.createCameraContext();
+        }
     },
 
     /**
      * 组件的方法列表
      */
     methods: {
-
-        // 开启相机ctx
-        async start() {
-            const result = await this.initAuthorize();
-            if (!result) return false;
-            if (!this.ctx) this.ctx = wx.createCameraContext();
-            return true;
-        },
-
         // 准备录制
         async readyRecord() {
-            if (this.data.isReading) return
-            this.setData({
-                isReading: true
-            })
             wx.showLoading({
                 title: '加载中..',
                 mask: true
             })
-            // 检测版本号
-            const canUse = checkVersion('2.18.0', () => {
-                this.triggerEvent('cannotUse')
-            })
-            if (!canUse) {
-                wx.hideLoading()
-                this.setData({
-                    isReading: false
-                })
-                return
-            }
 
-            // 启用相机
-            try {
-                const result = await this.start()
-                if (!result || !this.ctx) throw new Error()
-            } catch (e) {
-                wx.hideLoading()
-                this.setData({
-                    isReading: false
-                })
-                return
-            }
-            console.log('准备录制')
             this.setData({
                 bottomTips: tips.ready
             })
@@ -169,9 +134,6 @@ Component({
                 },
                 complete: () => {
                     wx.hideLoading()
-                    this.setData({
-                        isReading: false
-                    })
                 }
             })
         },
@@ -273,11 +235,8 @@ Component({
                         destHeight: frame.height,
                         quality: 0.8,
                         success(res) {
-                            console.log(res.tempFilePath)
-                            that.setData({
-                                src: res.tempFilePath
-                            })
                             //that.authProcess(res.tempFilePath)
+
                         },
                         fail(res) {
                             console.log('canvasToTempFilePath', res);
@@ -311,38 +270,11 @@ Component({
                 })
             }, 500)
         },
+
         // 用户不允许使用摄像头
         error(e) {
-            // const cameraName = 'scope.camera';
-            // this.triggerEvent('noAuth', cameraName)
+            this.triggerEvent('noAuth')
         },
 
-        // 初始相机和录音权限
-        async initAuthorize() {
-            const cameraName = 'scope.camera';
-            const scopeCamera = await getAuthorize(cameraName);
-            // 未授权相机
-            if (!scopeCamera) {
-                // 用户拒绝授权相机
-                if (!(await setAuthorize(cameraName))) this.openSetting();
-                return false;
-            }
-            return true;
-        },
-
-        // 打开设置授权
-        openSetting() {
-            wx.showModal({
-                title: '开启摄像头权限',
-                showCancel: true,
-                content: '是否打开？',
-                success: (res) => {
-                    this.triggerEvent('noAuth', '打开设置授权')
-                    if (res.confirm) {
-                        wx.openSetting();
-                    }
-                }
-            });
-        }
     }
 })
