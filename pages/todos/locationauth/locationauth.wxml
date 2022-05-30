@@ -3,5 +3,5 @@
 </cu-custom>
 
 <view class="page">
-    <camera-face id="cameraFace" bind:noAuth="handleNoAuth" />
+    <camera-face id="cameraFace" equipment="{{equipment}}" bind:noAuth="handleNoAuth" />
 </view>

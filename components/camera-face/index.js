@@ -17,6 +17,10 @@ Component({
 
     // 组件的属性列表
     properties: {
+        equipment: {
+            type: String,
+            value: ''
+        },
         // 人脸整体可信度 [0-1], 参考wx.faceDetect文档的res.confArray.global
         // 当超过这个可信度且正脸时开始录制人脸, 反之停止录制
         faceCredibility: {
@@ -182,6 +186,7 @@ Component({
         authProcess(filePath) {
             let that = this;
             let openid = wx.getStorageSync('openId')
+            let equipment = that.properties.equipment
             wx.uploadFile({
                 url: app.globalData.config.routes.auth_process,
                 header: {
@@ -191,17 +196,21 @@ Component({
                 filePath: filePath,
                 name: 'photo',
                 formData: {
-                    id: openid
+                    id: openid,
+                    equipment: equipment
                 },
                 success(result) {
                     var data = JSON.parse(result.data)
                     if (data.state == 'success') {
                         wx.showToast({
-                            title: '认证成功',
+                            icon: 'success',
+                            title: data.name + '已签到',
+                            duration: 2000
                         })
                     } else {
                         wx.showToast({
-                            title: '认证失败',
+                            icon: 'error',
+                            title: '签到失败',
                         })
                     }
                 },
@@ -235,8 +244,7 @@ Component({
                         destHeight: frame.height,
                         quality: 0.8,
                         success(res) {
-                            //that.authProcess(res.tempFilePath)
-
+                            that.authProcess(res.tempFilePath)
                         },
                         fail(res) {
                             console.log('canvasToTempFilePath', res);

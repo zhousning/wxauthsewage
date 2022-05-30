@@ -1,13 +1,14 @@
 const app = getApp()
 
 Page({
-    onHide() {
-    },
+    data: {},
 
-    onShow() {
-    },
-
-    data: {
+    onLoad: function (option) {
+        var that = this;
+        var equipment = option.equipment
+        that.setData({
+            equipment: equipment
+        })
     },
 
     // 当取消授权或者打开设置授权

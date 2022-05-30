@@ -1,7 +1,32 @@
 <cu-custom bgColor="bg-myblue" isBack="{{false}}">
     <view slot="backText">返回</view>
-    <view slot="content">今日任务</view>
+    <view slot="content">站点签到</view>
 </cu-custom>
 
-<button bindtap="handleTap" type="primary" style="margin: 400rpx 100rpx;"> 前往人脸录像 </button>
-    
+<scroll-view scroll-y class="scrollPage">
+
+  <view wx:for="{{items}}" wx:key="*this" class="cu-card article ">
+
+    <view class="cu-item shadow padding-bottom-xs">
+      <navigator hover-class='none' url="/pages/todos/locationauth/locationauth?equipment={{item.task_id}}">
+        <view class="cu-bar bg-white solid-bottom margin-bottom">
+          <view class='action'>
+            <text class='cuIcon-titles text-orange '></text>签到日期：{{item.task_date}}
+          </view>
+        </view>
+
+        <view class="content">
+          <view class="desc">
+            <view class="content margin-bottom-xs">站点名称：{{item.desc}}</view>
+            <view class="content margin-bottom-xs">签到人员：
+              <block wx:for="{{item.inspectors}}" wx:key="*this" wx:for-item="user">
+                {{user}}
+              </block>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class='cu-tabbar-height'></view>
+</scroll-view>

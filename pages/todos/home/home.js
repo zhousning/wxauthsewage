@@ -9,11 +9,37 @@ Component({
         StatusBar: app.globalData.StatusBar,
         CustomBar: app.globalData.CustomBar,
     },
-    methods: {
-        handleTap() {
-            wx.navigateTo({
-                url: "/pages/todos/locationauth/locationauth",
+    lifetimes: {
+        attached: function () {
+            let that = this;
+            let openid = wx.getStorageSync('openId')
+            wx.showLoading({
+                title: '数据加载中',
             })
-        }
+            wx.request({
+                url: app.globalData.config.routes.task_query_all,
+                method: 'GET',
+                header: {
+                    'Accept': "*/*",
+                    'content-type': 'application/json' // 默认值
+                },
+                data: {
+                    id: openid
+                },
+                success: function (res) {
+                    that.setData({
+                        items: res.data
+                    })
+                    wx.hideLoading()
+                },
+                fail: function (res) {
+                    wx.showToast({
+                        icon: 'error',
+                        title: '数据加载失败',
+                    })
+                    console.log(res)
+                }
+            })
+        },
     }
 })
