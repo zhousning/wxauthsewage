@@ -32,9 +32,9 @@ Component({
         faceAngle: {
             type: Object,
             value: {
-                p: 0.2,
-                y: 0.2,
-                r: 0.2
+                p: 0.3,
+                y: 0.1,
+                r: 0.1
             }
         },
         // 录制视频时长,不能超过30s
@@ -146,7 +146,11 @@ Component({
         processFaceData(res, frame) {
             if (res.confArray && res.angleArray) {
                 const {
-                    global
+                    global,
+                    leftEye,
+                    mouth,
+                    nose,
+                    rightEye
                 } = res.confArray;
                 const g = this.properties.faceCredibility;
                 const {
@@ -162,17 +166,26 @@ Component({
                 console.log('res.confArray.global:', global)
                 console.log('res.angleArray:', pitch, yaw, roll)
                 const isGlobal = global >= g;
-                const isPitch = Math.abs(pitch) <= p;
-                const isYaw = Math.abs(yaw) <= y;
-                const isRoll = Math.abs(roll) <= r;
-                //if (isGlobal && isPitch && isYaw && isRoll) {
+                const isPitch = Math.abs(pitch) >= p;
+                const isYaw = Math.abs(yaw) >= y;
+                const isRoll = Math.abs(roll) >= r;
+                if (this.data.isRecoding) return
                 if (isGlobal) {
-                    console.log('人脸可信,且是正脸');
-                    if (this.data.isRecoding) return
-                    this.setData({
-                        isRecoding: true
-                    });
-                    this.canvasPutImageData(frame)
+                    if (isPitch || isYaw || isRoll) {
+                        this.setData({
+                            bottomTips: '请平视摄像头'
+                        });
+                    } else if (global <= 0.8 || leftEye <= 0.8 || mouth <= 0.8 || nose <= 0.8 || rightEye <= 0.8) {
+                        this.setData({
+                            bottomTips: '请勿遮挡五官'
+                        });
+                    } else {
+                        this.setData({
+                            isRecoding: true,
+                            bottomTips: '签到中...'
+                        });
+                        this.canvasPutImageData(frame)
+                    }
                 } else {
                     console.log('人脸不可信,或者不是正脸');
                     this.cancel()
