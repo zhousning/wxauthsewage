@@ -1,6 +1,6 @@
 <cu-custom bgColor="bg-blue" isBack="{{false}}">
   <view slot="backText">返回</view>
-  <view slot="content">巡检计划</view>
+  <view slot="content">签到历史</view>
 </cu-custom>
 
 <!--<navcpn></navcpn>-->
@@ -10,29 +10,24 @@
   <view wx:for="{{items}}" wx:key="*this" class="cu-card article ">
 
     <view class="cu-item shadow padding-bottom-xs">
-      <navigator hover-class='none' url="/pages/todos/detail/detail?task_id={{item.task_id}}">
+   <!--    <navigator hover-class='none' url="/pages/todos/detail/detail?task_id={{item.task_id}}"> -->
         <view class="cu-bar bg-white solid-bottom margin-bottom">
           <view class='action'>
-            <text class='cuIcon-titles text-orange '></text>巡检日期：{{item.task_date}}
+            <text class='cuIcon-titles text-orange '></text>签到日期：{{item.task_date}}
           </view>
         </view>
 
         <view class="content">
           <view class="desc">
-            <view class="content margin-bottom-xs">巡检人员：
+            <view class="content margin-bottom-xs">站点名称：{{item.desc}}</view>
+            <view class="content margin-bottom-xs">签到人员：
               <block wx:for="{{item.inspectors}}" wx:key="*this" wx:for-item="user">
                 {{user}}
               </block>
             </view>
-            <view class="content margin-bottom-xs">巡检备注：{{item.desc}}</view>
           </view>
         </view>
-      </navigator>
-      <!--<view class="flex solid-top margin-top padding-xs justify-end">
-        <view class="cu-btn line-cyan padding-sm margin-xs ">接单</view>
-        <view class="cu-btn line-cyan padding-sm margin-xs ">转单</view>
-        <view class="cu-btn line-cyan padding-sm margin-xs ">报修进度</view>
-      </view>-->
+    <!--   </navigator> -->
     </view>
   </view>
   <view class='cu-tabbar-height'></view>

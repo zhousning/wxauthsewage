@@ -8,14 +8,14 @@
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/todos{{PageCur=='todos'?'_cur':''}}.png"></image>
     </view>
-    <view class="{{PageCur=='todos'?'text-black':'text-gray'}}">今日任务</view>
+    <view class="{{PageCur=='todos'?'text-black':'text-gray'}}">今日签到</view>
   </view>
 
   <view class="action" bindtap="NavChange" data-cur="done">
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/done{{PageCur=='done'?'_cur':''}}.png"></image>
     </view>
-    <view class="{{PageCur=='done'?'text-black':'text-gray'}}">巡检计划</view>
+    <view class="{{PageCur=='done'?'text-black':'text-gray'}}">签到历史</view>
   </view> 
 
   <!-- <view class="action text-gray add-action">
@@ -23,17 +23,17 @@
     手工报修
   </view> -->
 
-  <view class="action text-gray add-action">
+ <!--  <view class="action text-gray add-action">
     <button class="cu-btn cuIcon-scan bg-blue shadow" bindtap="scanRepair"></button>
     扫一扫
-  </view>
-
+  </view> -->
+<!-- 
   <view class="action" bindtap="NavChange" data-cur="market">
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/market{{PageCur=='market'?'_cur':''}}.png"></image>
     </view>
     <view class="{{PageCur=='market'?'text-black':'text-gray'}}">巡检历史</view>
-  </view> 
+  </view>  -->
 
   <view class="action" bindtap="NavChange" data-cur="my">
     <view class='cuIcon-cu-image'>

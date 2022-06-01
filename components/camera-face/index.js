@@ -99,6 +99,7 @@ Component({
     methods: {
         // 准备录制
         async readyRecord() {
+            if (!this.ctx) return;
             wx.showLoading({
                 title: '加载中..',
                 mask: true
