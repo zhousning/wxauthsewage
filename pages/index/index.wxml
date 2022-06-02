@@ -15,7 +15,7 @@
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/done{{PageCur=='done'?'_cur':''}}.png"></image>
     </view>
-    <view class="{{PageCur=='done'?'text-black':'text-gray'}}">签到历史</view>
+    <view class="{{PageCur=='done'?'text-black':'text-gray'}}">人员登记</view>
   </view> 
 
   <!-- <view class="action text-gray add-action">

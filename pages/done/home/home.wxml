@@ -1,34 +1,79 @@
 <cu-custom bgColor="bg-blue" isBack="{{false}}">
-  <view slot="backText">返回</view>
-  <view slot="content">签到历史</view>
+    <view slot="backText">返回</view>
+    <view slot="content">人员登记</view>
 </cu-custom>
 
 <!--<navcpn></navcpn>-->
 
-<scroll-view scroll-y class="scrollPage">
-
-  <view wx:for="{{items}}" wx:key="*this" class="cu-card article ">
-
-    <view class="cu-item shadow padding-bottom-xs">
-   <!--    <navigator hover-class='none' url="/pages/todos/detail/detail?task_id={{item.task_id}}"> -->
-        <view class="cu-bar bg-white solid-bottom margin-bottom">
-          <view class='action'>
-            <text class='cuIcon-titles text-orange '></text>签到日期：{{item.task_date}}
-          </view>
+<scroll-view scroll-x>
+    <form bindsubmit="bindFormSubmit" class="">
+        <view class="cu-form-group justify-between padding-top-xl">
+            <view class="title">姓名 </view>
+            <input placeholder="姓名" name="username" bindinput="usernameInput" />
         </view>
-
-        <view class="content">
-          <view class="desc">
-            <view class="content margin-bottom-xs">站点名称：{{item.desc}}</view>
-            <view class="content margin-bottom-xs">签到人员：
-              <block wx:for="{{item.inspectors}}" wx:key="*this" wx:for-item="user">
-                {{user}}
-              </block>
+        <view class="cu-form-group">
+            <view class="title">手机号码</view>
+            <input placeholder="手机号" name="phone" type="phone" bindinput="phoneInput" />
+            <view class="cu-capsule radius">
+                <view class="cu-tag bg-blue">
+                    +86
+                </view>
+                <view class="cu-tag line-blue">
+                    中国大陆
+                </view>
             </view>
-          </view>
         </view>
-    <!--   </navigator> -->
-    </view>
-  </view>
-  <view class='cu-tabbar-height'></view>
+        <view class="cu-form-group justify-between">
+            <view class="title">身份证 </view>
+            <input placeholder="身份证" name="idno" bindinput="idnoInput" />
+        </view>
+        <!-- 		<view class="cu-form-group ">
+			<view class="title">巡检任务</view>
+			<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+				<view class="picker">
+					{{picker[index]['task_date']}}
+				</view>
+			</picker>
+		</view> -->
+
+        <view class="cu-form-group">
+            <view class="title">性别</view>
+            <radio-group bindchange="radioChange" name="running">
+                <label class="" wx:for="{{running}}" wx:key="{{item.value}}" style="margin-right:80rpx;">
+                    <radio style="margin-right:10rpx;" value="{{item.value}}" checked="{{item.checked}}" />{{item.text}}
+                </label>
+            </radio-group>
+        </view>
+
+
+        <view class="cu-form-group ">
+            <textarea maxlength="-1" bindinput="textareaAInput" placeholder="家庭住址"></textarea>
+        </view>
+
+        <view class="cu-bar bg-white ">
+            <view class="action">
+            证件照4张：1寸照片、身份证正面、身份证反面、近期照片        {{imgList.length}}/4
+            </view>
+            <!-- <view class="action"> </view> -->
+        </view>
+
+        <view class="cu-form-group">
+            <view class="grid col-4 grid-square flex-sub">
+                <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+                    <image src='{{imgList[index]}}' mode='aspectFill'></image>
+                    <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                        <text class="cuIcon-close"></text>
+                    </view>
+                </view>
+                <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+                    <text class="cuIcon-cameraadd"></text>
+                </view>
+            </view>
+        </view>
+        <view class="padding-xl">
+                <button form-type="submit" class="cu-btn bg-blue shadow-blur block margin-tb-sm lg">提交</button>
+        </view>
+    </form>
+
+    <view class='cu-tabbar-height'></view>
 </scroll-view>

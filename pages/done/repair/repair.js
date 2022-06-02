@@ -19,12 +19,12 @@ Page({
     index: 0,
     picker: [],
     running: [{
-        text: '正常',
+        text: '男',
         value: '0',
         checked: 'true'
       },
       {
-        text: '异常',
+        text: '女',
         value: '1'
       },
     ],
