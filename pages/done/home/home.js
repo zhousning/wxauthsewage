@@ -71,7 +71,7 @@ Component({
             let that = this;
             let openid = wx.getStorageSync('openId')
             wx.chooseImage({
-                count: 4, //默认9
+                count: 1, //默认9
                 sizeType: ['original'], //可以指定是原图还是压缩图，默认二者都有
                 sourceType: ['album','camera'], //从相册选择album, 拍照camera
                 success: (res) => {
@@ -153,7 +153,7 @@ Component({
                 })
             } else if (imgs.length < 4) {
                 wx.showToast({
-                    title: '人脸照片不能小于4张',
+                    title: '证件照不全',
                     icon: 'none',
                     duration: 2000
                 })
