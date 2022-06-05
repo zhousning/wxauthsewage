@@ -20,3 +20,27 @@
         </cover-view>
     </canvas>
 </view>
+
+<!-- <view class="cu-modal {{modalName=='Image'?'show':''}}">
+    <view class="cu-dialog">
+        <view style="background: white;height:20px;">
+            <view class="cu-bar justify-end text-white">
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close text-black"></text>
+                </view>
+            </view>
+        </view>
+        <view class="padding-xs flex align-center bg-white">
+            <view class="flex-sub text-center">
+                <view class=" text-xsl padding">
+                    <text class=" cuIcon-roundcheckfill text-green"></text>
+                </view>
+            </view>
+        </view>
+        <view class="cu-bar bg-white padding-bottom-lg">
+            <view class="flex-sub text-xl " bindtap="hideModal">
+            <text class="text-black text-bold">{{title}}</text></view>
+        </view>
+    </view>
+</view>
+ -->

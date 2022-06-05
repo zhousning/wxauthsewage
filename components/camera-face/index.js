@@ -97,6 +97,11 @@ Component({
      * 组件的方法列表
      */
     methods: {
+        hideModal(e) {
+            this.setData({
+                modalName: null
+            })
+        },
         // 准备录制
         async readyRecord() {
             if (!this.ctx) return;
@@ -216,15 +221,25 @@ Component({
                 success(result) {
                     var data = JSON.parse(result.data)
                     if (data.state == 'success') {
-                        wx.showToast({
+/*                         wx.showToast({
                             icon: 'success',
                             title: data.name + '已签到',
-                            duration: 2000
+                            duration: 3000
+                        }) */
+                        wx.showModal({
+                            title: '签到结果',
+                            content: data.name + '已签到',
+                            showCancel: false
                         })
                     } else {
-                        wx.showToast({
+/*                         wx.showToast({
                             icon: 'error',
                             title: '签到失败',
+                        }) */
+                        wx.showModal({
+                            title: '签到结果',
+                            content: '签到失败',
+                            showCancel: false
                         })
                     }
                 },
