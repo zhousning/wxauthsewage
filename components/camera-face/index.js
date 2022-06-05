@@ -221,24 +221,14 @@ Component({
                 success(result) {
                     var data = JSON.parse(result.data)
                     if (data.state == 'success') {
-/*                         wx.showToast({
-                            icon: 'success',
-                            title: data.name + '已签到',
-                            duration: 3000
-                        }) */
                         wx.showModal({
-                            title: '签到结果',
-                            content: data.name + '已签到',
+                            title: '已签到',
+                            content: data.name,
                             showCancel: false
                         })
                     } else {
-/*                         wx.showToast({
-                            icon: 'error',
-                            title: '签到失败',
-                        }) */
                         wx.showModal({
-                            title: '签到结果',
-                            content: '签到失败',
+                            title: '签到失败',
                             showCancel: false
                         })
                     }
