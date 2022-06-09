@@ -5,7 +5,6 @@
         "pages/todos/locationauth/locationauth",
         "pages/todos/auth/auth",
         "pages/done/home/home",
-        "pages/market/home/home",
         "pages/my/home/home",
         "pages/my/about/about",
         "pages/my/auth/auth"

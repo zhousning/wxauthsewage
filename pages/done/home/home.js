@@ -185,8 +185,13 @@ Component({
                                 duration: 3000,
                                 success: function () {
                                     setTimeout(() => {
-                                        wx.redirectTo({
-                                            url: '../../index/index',
+                                        that.setData({
+                                            username: '',
+                                            phone: '',
+                                            idno: '',
+                                            question: '',
+                                            imgList: [],
+                                            images: []
                                         })
                                     }, 3000);
                                 }
