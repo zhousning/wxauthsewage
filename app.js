@@ -43,7 +43,6 @@ App({
         userInfo: {},
         hasUserInfo: false,
         config: config,
-        task_ongoin: null,
         ColorList: [{
                 title: '嫣红',
                 name: 'red',

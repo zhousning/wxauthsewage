@@ -1,9 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "pend": "/pages/done/pend/pend",
-    "process": "/pages/done/process/process",
-    "confirm": "/pages/done/confirm/confirm",
-    "complete": "/pages/done/complete/complete"
-  }
-}

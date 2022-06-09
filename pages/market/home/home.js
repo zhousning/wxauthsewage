@@ -1,6 +1,5 @@
 // pages/todos/process/process.js
 const app = getApp()
-const config = require('../../../libs/config.js')
 
 Component({
   options: {
@@ -19,7 +18,7 @@ Component({
         title: '数据加载中',
       })
       wx.request({
-        url: config.routes.task_query_finish,
+        url: app.globalData.config.routes.task_query_finish,
         method: 'GET',
         header: {
           'Accept': "*/*",

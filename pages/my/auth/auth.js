@@ -1,5 +1,4 @@
 const app = getApp()
-const config = require('../../../libs/config')
 
 Page({
     options: {
@@ -42,7 +41,7 @@ Page({
     },
     updateUserInfo: function (userInfo) {
         wx.request({
-            url: config.routes.updateUser + wx.getStorageSync('openId'),
+            url: app.globalData.config.routes.updateUser + wx.getStorageSync('openId'),
             method: 'PUT',
             data: {
                 nickname: userInfo.nickName,

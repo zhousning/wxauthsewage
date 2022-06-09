@@ -10,7 +10,7 @@
             </view>
         </view>
         <view class="bottom-view">
-            <view wx:if="{{!bottomTips}}" class="bottom-btn" bindtap="readyRecord">开始识别</view>
+            <view wx:if="{{!bottomTips}}" class="bottom-btn" bindtap="readyRecord">开始签到</view>
             <view wx:else class="bottom-tips">{{bottomTips}}</view>
         </view>
     </view>

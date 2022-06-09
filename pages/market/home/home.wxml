@@ -25,13 +25,7 @@
           </view>
         </view>
       </navigator>
-      <!--<view class="flex solid-top margin-top padding-xs justify-end">
-        <view class="cu-btn line-cyan padding-sm margin-xs ">接单</view>
-        <view class="cu-btn line-cyan padding-sm margin-xs ">转单</view>
-        <view class="cu-btn line-cyan padding-sm margin-xs ">报修进度</view>
-      </view>-->
     </view>
   </view>
   <view class='cu-tabbar-height'></view>
-<!--<order-card></order-card>-->
 </scroll-view>

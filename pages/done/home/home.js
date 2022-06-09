@@ -1,6 +1,5 @@
 // pages/todos/process/process.js
 const app = getApp()
-const config = require('../../../libs/config.js')
 
 Component({
     options: {
@@ -76,7 +75,7 @@ Component({
                 sourceType: ['album','camera'], //从相册选择album, 拍照camera
                 success: (res) => {
                     wx.uploadFile({
-                        url: config.routes.img_upload,
+                        url: app.globalData.config.routes.img_upload,
                         header: {
                             'Accept': "*/*",
                             'content-type': 'application/json' // 默认值
@@ -162,7 +161,7 @@ Component({
                     title: '数据保存中',
                 })
                 wx.request({
-                    url: config.routes.task_report_create,
+                    url: app.globalData.config.routes.task_report_create,
                     method: 'POST',
                     header: {
                         'Accept': "*/*",

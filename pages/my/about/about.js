@@ -1,5 +1,4 @@
 const app = getApp();
-const configs = require('../../../libs/config.js')
 Page({
     data: {
         StatusBar: app.globalData.StatusBar,
@@ -22,7 +21,7 @@ Page({
             title: '数据加载中',
         })
         wx.request({
-            url: configs.routes.status,
+            url: app.globalData.config.routes.status,
             method: 'get',
             header: {
                 'Accept': "*/*",
@@ -39,7 +38,7 @@ Page({
                         ongoing: true
                     })
                     wx.request({
-                        url: configs.routes.fcts,
+                        url: app.globalData.config.routes.fcts,
                         method: 'get',
                         header: {
                             'Accept': "*/*",
@@ -109,7 +108,7 @@ Page({
             area_index: e.detail.value
         })
         wx.request({
-            url: configs.routes.streets,
+            url: app.globalData.config.routes.streets,
             method: 'get',
             header: {
                 'Accept': "*/*",
@@ -139,7 +138,7 @@ Page({
             street_index: e.detail.value
         })
         wx.request({
-            url: configs.routes.sites,
+            url: app.globalData.config.routes.sites,
             method: 'get',
             header: {
                 'Accept': "*/*",
@@ -195,7 +194,7 @@ Page({
                 title: '系统正在处理中...',
             })
             wx.request({
-                url: configs.routes.set_fct,
+                url: app.globalData.config.routes.set_fct,
                 method: 'post',
                 data: {
                     id: openid,
