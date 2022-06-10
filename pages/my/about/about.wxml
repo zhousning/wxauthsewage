@@ -16,6 +16,14 @@
                     <input placeholder="手机号" name="phone" type="phone" bindinput="phoneInput" />
                 </view>
                 <view class="cu-form-group ">
+                    <view class="title">公司</view>
+                    <picker bindchange="FctPickerChange" value="{{fct_index}}" range="{{fct_picker}}">
+                        <view class="picker">
+                            {{fct_picker[fct_index]}}
+                        </view>
+                    </picker>
+                </view>
+                <view class="cu-form-group ">
                     <view class="title">县区</view>
                     <picker bindchange="AreaPickerChange" value="{{area_index}}" range="{{area_picker}}">
                         <view class="picker">
@@ -60,6 +68,9 @@
                 <view class="title">手机号: {{phone}}</view>
             </view>
 
+            <view class="cu-form-group">
+                <view class="title">公司: {{owner}}</view>
+            </view>
             <view class="cu-form-group">
                 <view class="title">站点: {{fct}}</view>
             </view>

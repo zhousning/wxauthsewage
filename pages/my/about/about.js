@@ -12,6 +12,8 @@ Page({
         area_picker: [],
         street_index: 0,
         street_picker: [],
+        fct_index: 0,
+        fct_picker: [],
         items: [],
     },
     onLoad: function () {
@@ -50,12 +52,17 @@ Page({
                         success: function (res) {
                             wx.hideLoading();
                             if (res.data) {
-                                var array = []
-                                res.data.forEach(element => {
-                                    array.push(element)
+                                var device_array = []
+                                var fct_array = []
+                                res.data.devices.forEach(element => {
+                                    device_array.push(element)
+                                });
+                                res.data.fcts.forEach(element => {
+                                    fct_array.push(element)
                                 });
                                 that.setData({
-                                    area_picker: array
+                                    area_picker: device_array,
+                                    fct_picker: fct_array,
                                 })
                             } else {
                                 wx.showToast({
@@ -79,6 +86,7 @@ Page({
                         ongoing: false,
                         username: data.name,
                         phone: data.phone,
+                        owner: data.owner,
                         fct: data.fct
                     })
                 }
@@ -99,6 +107,12 @@ Page({
         }
         this.setData({
             items
+        })
+    },
+    FctPickerChange(e) {
+        let that = this
+        that.setData({
+            fct_index: e.detail.value
         })
     },
     AreaPickerChange(e) {
@@ -200,7 +214,8 @@ Page({
                     id: openid,
                     name: that.data.username,
                     phone: that.data.phone,
-                    fct: sites 
+                    sites: sites,
+                    fct: that.data.fct_picker[that.data.fct_index] 
                 },
                 header: {
                     'Accept': "*/*",
