@@ -1,6 +1,6 @@
 <cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
     <view slot="backText">返回</view>
-    <view slot="content">个人资料</view>
+    <view slot="content">站点绑定</view>
 </cu-custom>
 <scroll-view scroll-x class='bg-white padding-xl '>
     <block wx:if="{{ongoing}}">
@@ -19,7 +19,7 @@
                     <view class="title">公司</view>
                     <picker bindchange="FctPickerChange" value="{{fct_index}}" range="{{fct_picker}}">
                         <view class="picker">
-                            {{fct_picker[fct_index]}}
+                            {{fct_index?fct_picker[fct_index]:'请选择'}}
                         </view>
                     </picker>
                 </view>
@@ -27,7 +27,7 @@
                     <view class="title">县区</view>
                     <picker bindchange="AreaPickerChange" value="{{area_index}}" range="{{area_picker}}">
                         <view class="picker">
-                            {{area_picker[area_index]}}
+                            {{area_index?area_picker[area_index]:'请选择'}}
                         </view>
                     </picker>
                 </view>
@@ -35,7 +35,7 @@
                     <view class="title">街道</view>
                     <picker bindchange="StreetPickerChange" value="{{street_index}}" range="{{street_picker}}">
                         <view class="picker">
-                            {{street_picker[street_index]}}
+                            {{street_index?street_picker[street_index]:'请选择'}}
                         </view>
                     </picker>
                 </view>

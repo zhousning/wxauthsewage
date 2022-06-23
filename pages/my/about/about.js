@@ -52,16 +52,11 @@ Page({
                         success: function (res) {
                             wx.hideLoading();
                             if (res.data) {
-                                var device_array = []
                                 var fct_array = []
-                                res.data.devices.forEach(element => {
-                                    device_array.push(element)
-                                });
                                 res.data.fcts.forEach(element => {
                                     fct_array.push(element)
                                 });
                                 that.setData({
-                                    area_picker: device_array,
                                     fct_picker: fct_array,
                                 })
                             } else {
@@ -110,9 +105,36 @@ Page({
         })
     },
     FctPickerChange(e) {
+        let openid = wx.getStorageSync('openId')
         let that = this
         that.setData({
             fct_index: e.detail.value
+        })
+        wx.request({
+            url: app.globalData.config.routes.devices,
+            method: 'get',
+            header: {
+                'Accept': "*/*",
+                'content-type': 'application/json' // 默认值
+            },
+            data: {
+                id: openid,
+                fct: that.data.fct_picker[e.detail.value]
+            },
+            success: function (res) {
+                if (res.data) {
+                    var device_array = []
+                    res.data.areas.forEach(element => {
+                        device_array.push(element)
+                    });
+                    that.setData({
+                        area_picker: device_array,
+                        street_index: 0,
+                        street_picker: [],
+                        items: []
+                    })
+                }
+            }
         })
     },
     AreaPickerChange(e) {

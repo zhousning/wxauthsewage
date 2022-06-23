@@ -52,7 +52,7 @@
 
         <view class="cu-bar bg-white ">
             <view class="action">
-            1寸照片1张、身份证正面1张、近期人脸照片2张        {{imgList.length}}/4
+           身份证正面1张、人脸照片3张        {{imgList.length}}/4
             </view>
             <!-- <view class="action"> </view> -->
         </view>
