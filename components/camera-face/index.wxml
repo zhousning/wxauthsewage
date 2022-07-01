@@ -15,7 +15,7 @@
         </view>
     </view>
 
-    <canvas canvas-id="mycanvas" style="width: 100vw; height: 100vh;">
+    <canvas canvas-id="mycanvas" style="width: 100vw; height: 150vh;">
         <cover-view class="cover-view">
         </cover-view>
     </canvas>

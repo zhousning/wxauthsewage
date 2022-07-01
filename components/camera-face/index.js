@@ -21,6 +21,14 @@ Component({
             type: String,
             value: ''
         },
+        longitude: {
+            type: String,
+            value: ''
+        },
+        latitude: {
+            type: String,
+            value: ''
+        },
         // 人脸整体可信度 [0-1], 参考wx.faceDetect文档的res.confArray.global
         // 当超过这个可信度且正脸时开始录制人脸, 反之停止录制
         faceCredibility: {
@@ -206,6 +214,8 @@ Component({
             let that = this;
             let openid = wx.getStorageSync('openId')
             let equipment = that.properties.equipment
+            let longitude = that.properties.longitude
+            let latitude = that.properties.latitude
             wx.uploadFile({
                 url: app.globalData.config.routes.auth_process,
                 header: {
@@ -216,7 +226,9 @@ Component({
                 name: 'photo',
                 formData: {
                     id: openid,
-                    equipment: equipment
+                    equipment: equipment,
+                    longitude: longitude,
+                    latitude: latitude,
                 },
                 success(result) {
                     var data = JSON.parse(result.data)
