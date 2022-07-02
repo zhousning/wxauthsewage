@@ -6,9 +6,9 @@
     <camera-face id="cameraFace" equipment="{{equipment}}" longitude="{{longitude}}" latitude="{{latitude}}" bind:noAuth="handleNoAuth" wx:if="{{position_locate}}" />
 
 
-	<view class="page-section page-section-gap">
+<!-- 	<view class="page-section page-section-gap">
 		<map id="myMap" style="width: 100%; height: 300px;" latitude="{{latitude}}" longitude="{{longitude}}" scale="16" show-location="true" >
 		</map>
-	</view>
+	</view> -->
 	
 </view>

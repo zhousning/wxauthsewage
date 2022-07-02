@@ -11,18 +11,16 @@
       <navigator hover-class='none' url="/pages/todos/locationauth/locationauth?equipment={{item.task_id}}">
         <view class="cu-bar bg-white solid-bottom margin-bottom">
           <view class='action'>
-            <text class='cuIcon-titles text-orange '></text>签到日期：{{item.task_date}}
+            <text class='cuIcon-titles text-orange '></text>{{item.desc}}    {{item.task_date}} 
           </view>
         </view>
 
         <view class="content">
           <view class="desc">
-            <view class="content margin-bottom-xs">站点名称：{{item.desc}}</view>
-            <view class="content margin-bottom-xs">签到人员：
-              <block wx:for="{{item.inspectors}}" wx:key="*this" wx:for-item="user">
-                {{user}}
+              <view class="content margin-bottom-xs">签到人员:</view>
+              <block wx:for="{{item.inspectors}}" wx:key="*this" wx:for-index="key" wx:for-item="user">
+                <view class="content margin-bottom-xs">{{key}}{{user}}</view>
               </block>
-            </view>
           </view>
         </view>
       </navigator>

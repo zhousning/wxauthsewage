@@ -37,7 +37,6 @@ Component({
                         icon: 'error',
                         title: '数据加载失败',
                     })
-                    console.log(res)
                 }
             })
         },

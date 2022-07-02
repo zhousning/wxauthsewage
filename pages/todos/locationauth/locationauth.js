@@ -14,9 +14,9 @@ Page({
     },
 
     onReady: function (e) {
-        var mapCtx = wx.createMapContext('myMap')
         this.locatePosition();
-        mapCtx.moveToLocation();
+/*         var mapCtx = wx.createMapContext('myMap')
+        mapCtx.moveToLocation(); */
     },
 
     locatePosition() {
@@ -29,7 +29,7 @@ Page({
             isHighAccuracy: true,
             highAccuracyExpireTime: 5000,
             success(res) {
-                setTimeout(function() {
+                setTimeout(function () {
                     const latitude = res.latitude
                     const longitude = res.longitude
                     that.setData({
@@ -41,11 +41,21 @@ Page({
                 }, 2000)
             },
             fail(res) {
-                wx.hideLoading()
-                wx.showToast({
-                    title: '30秒后重试',
-                    icon: "loading",
-                    duration: 1000
+                wx.getSetting({
+                    success(res) {
+                        if (res.authSetting['scope.userLocation']) {
+                            wx.hideLoading()
+                            wx.showToast({
+                                title: '30秒后重试',
+                                icon: "loading",
+                                duration: 1000
+                            })
+                        } else {
+                            wx.navigateTo({
+                                url: '/pages/todos/positionauth/positionauth',
+                            })
+                        }
+                    }
                 })
             }
         })

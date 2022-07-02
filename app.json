@@ -3,6 +3,7 @@
         "pages/index/index",
         "pages/todos/home/home",
         "pages/todos/locationauth/locationauth",
+        "pages/todos/positionauth/positionauth",
         "pages/todos/auth/auth",
         "pages/done/home/home",
         "pages/my/home/home",
