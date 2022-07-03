@@ -7,6 +7,7 @@
         "pages/todos/auth/auth",
         "pages/done/home/home",
         "pages/my/home/home",
+        "pages/my/account/account",
         "pages/my/about/about",
         "pages/my/auth/auth"
     ],

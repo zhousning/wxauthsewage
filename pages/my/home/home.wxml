@@ -33,6 +33,12 @@
                 </navigator>
             </view>
             <view class="cu-item arrow">
+                <navigator class="content" url="/pages/my/account/account" hover-class="none">
+                    <text class="cuIcon-lock text-purple"></text>
+                    <text class="text-grey">网页系统账户</text>
+                </navigator>
+            </view>
+            <view class="cu-item arrow">
                 <view class="content" bindtap="LogOut">
                     <text class="cuIcon-github text-grey"></text>
                     <text class="text-grey">退出系统</text>
